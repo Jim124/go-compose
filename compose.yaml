@@ -1,0 +1,20 @@
+name: go-mysql-app
+services:
+  db:
+    image: mysql:8.0.39
+    ports:
+      - 3306:3306
+    env_file:
+      - .env.db-root-cred
+      - .env.db-user
+    volumes:
+      - type: volume
+        source: go-rest-data
+        target: /var/lib/mysql
+    networks:
+      - go-mysql-net
+volumes:
+  go-rest-data:
+
+networks:
+  go-mysql-net:
