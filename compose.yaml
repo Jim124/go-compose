@@ -1,5 +1,15 @@
 name: go-mysql-app
 services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile.dev
+    networks:
+      - go-mysql-net
+    ports:
+      - 9000:9000
+    depends_on:
+      - db
   db:
     image: mysql:8.0.39
     ports:
