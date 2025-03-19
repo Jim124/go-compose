@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-compose-rest/database"
+	"github.com/go-compose-rest/routes"
 	"github.com/joho/godotenv"
 )
 
@@ -21,6 +22,7 @@ func main() {
 	database.Init(mysqlHost, mysqlDb, mysqlUser, mysqlPassword)
 	port := os.Getenv("PORT")
 	server := gin.Default()
+	routes.RegisterServer(server)
 	server.Run(fmt.Sprintf(":%v", port))
 
 }
