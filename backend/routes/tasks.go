@@ -14,7 +14,7 @@ func getTasks(context *gin.Context) {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not query task"})
 		return
 	}
-	context.JSON(http.StatusOK, gin.H{"data": tasks})
+	context.JSON(http.StatusOK, tasks)
 }
 
 func createTask(context *gin.Context) {
@@ -29,7 +29,7 @@ func createTask(context *gin.Context) {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not create task"})
 		return
 	}
-	context.JSON(http.StatusCreated, gin.H{"data": task})
+	context.JSON(http.StatusCreated, task)
 }
 
 func getTaskById(context *gin.Context) {
@@ -39,7 +39,7 @@ func getTaskById(context *gin.Context) {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not fetch task, please try again later"})
 		return
 	}
-	context.JSON(http.StatusOK, gin.H{"data": task})
+	context.JSON(http.StatusOK, task)
 }
 
 func updateTaskById(context *gin.Context) {
